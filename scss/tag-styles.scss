@@ -1,0 +1,69 @@
+// @import "str-to-list";
+
+.tag-box,
+.discourse-tags,
+.topic-list .link-bottom-line,
+.extra-info-wrapper .topic-header-extra {
+  // Define color map with tag variables and their corresponding colors
+  $tag-colors: (
+    yellow: (
+      #fdb300,
+      $yellow,
+    ),
+    orange: (
+      #ff7a00,
+      $orange,
+    ),
+    red: (
+      #ea3436,
+      $red,
+    ),
+    green: (
+      #52c50c,
+      $green,
+    ),
+    lightblue: (
+      #459bff,
+      $lightblue,
+    ),
+    blue: (
+      #007aff,
+      $blue,
+    ),
+    black: (
+      #000,
+      $black,
+    ),
+  );
+
+  // Loop through each color in the map
+  @each $name, $values in $tag-colors {
+    $color: nth($values, 1);
+    $tags: str-to-list("#{nth($values, 2)}", "|");
+
+    @each $tag in $tags {
+      .discourse-tag[data-tag-name="#{$tag}"] {
+        color: var(--secondary) !important;
+        background-color: $color;
+        &:hover {
+          color: var(--secondary);
+          background-color: $color;
+        }
+      }
+    }
+  }
+
+  // Handle outline tag separately since it has different styling
+  $tags-outline: str-to-list("#{$outline}", "|");
+  @each $tag in $tags-outline {
+    .discourse-tag[data-tag-name="#{$tag}"] {
+      color: var(--tertiary-hover);
+      background-color: var(--secondary) !important;
+      border: 1px solid var(--tertiary-hover);
+      &:hover {
+        color: var(--tertiary-hover);
+        background-color: var(--secondary);
+      }
+    }
+  }
+}
