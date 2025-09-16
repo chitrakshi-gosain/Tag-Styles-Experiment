@@ -40,28 +40,18 @@
     $tags: str-to-list("#{nth($values, 2)}", "|");
 
     @each $tag in $tags {
-      .discourse-tag[data-tag-name="#{to-lower-case($tag)}"] {
-        color: var(--secondary) !important;
-        background-color: $color;
-        &:hover {
-          color: var(--secondary);
-          background-color: $color;
-        }
+      // Target only the bullet (::before), not the tag background
+      .discourse-tag[data-tag-name="#{to-lower-case($tag)}"]::before {
+        background-color: $color !important;
       }
     }
   }
 
-  // Handle outline tag separately since it has different styling
+  // Handle outline tag separately (if you also want bullets styled)
   $tags-outline: str-to-list("#{$outline}", "|");
   @each $tag in $tags-outline {
-    .discourse-tag[data-tag-name="#{to-lower-case($tag)}"] {
-      color: var(--tertiary-hover) !important;
-      background-color: var(--secondary) !important;
-      border: 1px solid var(--tertiary-hover);
-      &:hover {
-        color: var(--tertiary-hover);
-        background-color: var(--secondary);
-      }
+    .discourse-tag[data-tag-name="#{to-lower-case($tag)}"]::before {
+      background-color: var(--tertiary-hover) !important;
     }
   }
 }
