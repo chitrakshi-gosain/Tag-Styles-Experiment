@@ -1,3 +1,11 @@
+$purple: #9b59b6;
+$teal: #1abc9c;
+$pink: #ff6f91;
+$brown: #a0522d;
+$lime: #cddc39;
+$coral: #ff6347;
+$violet: #8e44ad;
+
 .tag-box,
 .discourse-tags,
 .topic-list .link-bottom-line,
@@ -30,26 +38,33 @@
     ),
     purple: (
       #9b59b6, // a vibrant purple
+      $purple,
     ),
     teal: (
       #1abc9c, // soft teal
+      $teal,
     ),
     pink: (
       #ff6f91, // warm pink
+      $pink,
     ),
     brown: (
       #a0522d, // earthy brown
+      $brown,
     ),
     lime: (
       #cddc39, // bright lime
+      $lime,
     ),
     coral: (
       #ff6347, // lively coral
+      $coral,
     ),
     violet: (
       #8e44ad, // deep violet
+      $violet,
     )
-);
+  );
 
   // Loop through each color in the map
   @each $name, $values in $tag-colors {
